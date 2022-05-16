@@ -1,6 +1,5 @@
 package com.github.Twhiter.lib;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.github.Twhiter.dto.*;
 import com.github.Twhiter.util.RSAUtil;
 import com.fasterxml.jackson.core.type.TypeReference;
