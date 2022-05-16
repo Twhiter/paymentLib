@@ -6,11 +6,40 @@
     <artifactId>paymentLib</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+
+    <name>Payment Client Library</name>
+    <description>A application client library for facilitate accessing payment system</description>
+    <url>https://github.com/Twhiter/paymentLib</url>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>http://www.opensource.org/licenses/mit-license.php</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Whiter TU</name>
+            <email>1065582542@qq.com</email>
+            <organization>Belarusian State University of Informatics and RadioElectronics</organization>
+            <organizationUrl>http://www.bsuir.by</organizationUrl>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/Twhiter/paymentLib.git</connection>
+        <developerConnection>scm:git:ssh://github.com:Twhiter/paymentLib.git</developerConnection>
+        <url>http://github.com/Twhiter/paymentLib/tree/master</url>
+    </scm>
+
+
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
@@ -37,10 +66,10 @@
     </dependencies>
     <packaging>jar</packaging>
 
-    <name>paymentLib</name>
 
     <properties>
         <java.version>17</java.version>
+        <project.build.encoding>UTF-8</project.build.encoding>
     </properties>
 
 </project>
