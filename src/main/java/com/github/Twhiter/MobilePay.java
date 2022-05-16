@@ -1,4 +1,4 @@
-package com.github.Twhiter.lib;
+package com.github.Twhiter;
 
 import com.github.Twhiter.dto.*;
 import com.github.Twhiter.util.RSAUtil;
