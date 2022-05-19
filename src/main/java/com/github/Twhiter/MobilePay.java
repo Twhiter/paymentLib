@@ -78,13 +78,15 @@ public class MobilePay {
         MerchantVerifyInfo merchantVerifyInfo = new MerchantVerifyInfo();
         merchantVerifyInfo.sessionId = sessionId;
 
-        byte[] signatureBytes = (sessionId + "").getBytes(StandardCharsets.UTF_8);
+        byte[] signatureContentBytes = (sessionId + "").getBytes(StandardCharsets.UTF_8);
+        byte[] signatureBytes = RSAUtil.sign(signatureContentBytes, privateKeyBase64);
+
         merchantVerifyInfo.signature = Base64.getEncoder().encodeToString(signatureBytes);
 
         byte[] objBytes = new ObjectMapper().writeValueAsBytes(merchantVerifyInfo);
-        byte[] encryptedBytes = RSAUtil.encrypt(objBytes,serverPublicKeyBase64);
+        byte[] encryptedBytes = RSAUtil.encrypt(objBytes, serverPublicKeyBase64);
 
-        String strToSend=  Base64.getEncoder().encodeToString(encryptedBytes);
+        String strToSend = Base64.getEncoder().encodeToString(encryptedBytes);
 
         HttpClient client = HttpClient.newHttpClient();
 
