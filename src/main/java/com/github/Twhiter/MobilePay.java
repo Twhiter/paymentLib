@@ -111,15 +111,17 @@ public class MobilePay {
     public String refund(int payId) throws IOException, InterruptedException {
 
         RefundRequest refundRequest = new RefundRequest();
-        refundRequest.payId= payId;
+        refundRequest.payId = payId;
 
-        byte[] signatureBytes = String.format("%d,%d",merchantId,payId).getBytes(StandardCharsets.UTF_8);
+        byte[] signatureContentBytes = String.format("%d,%d", merchantId, payId).getBytes(StandardCharsets.UTF_8);
+
+        byte[] signatureBytes = RSAUtil.sign(signatureContentBytes, privateKeyBase64);
         refundRequest.signature = Base64.getEncoder().encodeToString(signatureBytes);
 
         byte[] objBytes = new ObjectMapper().writeValueAsBytes(refundRequest);
-        byte[] encryptedBytes = RSAUtil.encrypt(objBytes,serverPublicKeyBase64);
+        byte[] encryptedBytes = RSAUtil.encrypt(objBytes, serverPublicKeyBase64);
 
-        String strToSend=  Base64.getEncoder().encodeToString(encryptedBytes);
+        String strToSend = Base64.getEncoder().encodeToString(encryptedBytes);
 
         HttpClient client = HttpClient.newHttpClient();
 
