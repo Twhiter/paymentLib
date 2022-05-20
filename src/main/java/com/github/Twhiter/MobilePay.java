@@ -112,6 +112,7 @@ public class MobilePay {
 
         RefundRequest refundRequest = new RefundRequest();
         refundRequest.payId = payId;
+        refundRequest.merchantId = merchantId;
 
         byte[] signatureContentBytes = String.format("%d,%d", merchantId, payId).getBytes(StandardCharsets.UTF_8);
 
